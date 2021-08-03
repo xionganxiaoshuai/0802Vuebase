@@ -1,7 +1,7 @@
 <template>
   <li class="list-group-item">
     <div class="handle">
-      <a href="javascript:;">删除</a>
+      <a href="javascript:;" @click="deleteC">删除</a>
     </div>
     <p class="user">
       <span>{{comment.username}}</span>
@@ -14,17 +14,18 @@
 <script>
 export default {
     name: 'Item',
-    props:['comment'],
+    props:['comment','deleteComment','index'],
     components: {},
 
     data() {
         return {}
     },
 
-    mounted() {},
-
     methods: {
-      
+      deleteC(){
+        // console.log(index);
+        this.deleteComment(this.index)
+      }
     },
 }
 </script>

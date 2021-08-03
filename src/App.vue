@@ -3,8 +3,8 @@
     <div>
       <Header></Header>
       <div class="container">
-        <Add></Add>
-        <List :comments="comments"></List>
+        <Add :addComment="addComment"></Add>
+        <List :comments="comments" :deleteComment="deleteComment"></List>
       </div>
     </div>
   </div>
@@ -33,9 +33,17 @@ export default {
         }
     },
 
-    mounted() {},
+    methods: {
+      // 添加的方法
+      addComment(contend){
+        this.comments.push(contend)
+      },
+      // 删除的方法
+      deleteComment(index){
+        this.comments.splice(index,1)
+      }
 
-    methods: {},
+    },
 }
 </script>
 
