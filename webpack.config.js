@@ -1,5 +1,6 @@
 const path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const {
   VueLoaderPlugin
 } = require('vue-loader')
@@ -52,7 +53,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/public/index.html'
     }),
-     new VueLoaderPlugin()
+     new VueLoaderPlugin(),
+     new CopyWebpackPlugin([{
+       from: path.resolve(__dirname, 'src/public'),
+       to: path.resolve(__dirname, 'dist'),
+       ignores:['index.html']
+     }])
   ],
 
 

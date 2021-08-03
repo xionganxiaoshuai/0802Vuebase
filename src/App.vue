@@ -1,36 +1,43 @@
 <template>
-  <div>
-    <MyButton></MyButton>
+  <div id="app">
+    <div>
+      <Header></Header>
+      <div class="container">
+        <Add></Add>
+        <List :comments="comments"></List>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import MyButton from "./components/MyButton";
-
+import Header from './components/Header.vue'
+import Add from './components/Add.vue'
+import List from './components/List.vue'
 export default {
-  name: 'App',
+    name: 'App',
 
-  components: { 
-    MyButton
-   },
+    components: {
+        Header,
+        Add,
+        List,
+    },
 
+    data() {
+        return {
+            comments: [
+              { id: 1, username: 'aaa', content: 'vue不错哦' },
+              { id: 2, username: 'bbb', content: '两天学会' },
+              { id: 3, username: 'ccc', content: 'webpack' },
+              ],
+        }
+    },
 
-  data() {
-    return {
-      
-    };
-  },
+    mounted() {},
 
-  mounted() {
-    
-  },
-
-  methods: {
-    
-  },
-};
+    methods: {},
+}
 </script>
 
 <style scoped>
-
 </style>

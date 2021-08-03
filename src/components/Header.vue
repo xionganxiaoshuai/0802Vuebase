@@ -1,31 +1,34 @@
 <template>
-  <div>
-    
-  </div>
+  <header class="site-header jumbotron">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <h1>请发表对vue的评论</h1>
+          </div>
+        </div>
+      </div>
+    </header>
 </template>
 
 <script>
 export default {
-  name: 'Header',
+    name: 'Header',
 
-  components: {  },
+    components: {},
 
-  data() {
-    return {
-      
-    };
-  },
+    data() {
+        return {}
+    },
 
-  mounted() {
-    
-  },
+    mounted() {},
 
-  methods: {
-    
-  },
-};
+    methods: {},
+}
 </script>
 
 <style scoped>
-
+.col-xs-12 h1{
+  color: red;
+  font-size: 80px;
+}
 </style>
