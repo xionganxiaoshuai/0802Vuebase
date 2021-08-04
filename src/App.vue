@@ -1,51 +1,75 @@
 <template>
-  <div id="app">
-    <div>
-      <Header></Header>
-      <div class="container">
-        <Add :addComment="addComment"></Add>
-        <List :comments="comments" :deleteComment="deleteComment"></List>
-      </div>
+  <div class="todo-container">
+    <div class="todo-wrap">
+      <Header :addTodo="addTodo"></Header>
+      <List :todos="todos"
+            :updateTodo="updateTodo"
+            :deleteTodo="deleteTodo"
+      ></List>
+      <Footer :todos="todos" :updateAll="updateAll" :deleteAll="deleteAll"></Footer>
+
     </div>
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
-import Add from './components/Add.vue'
 import List from './components/List.vue'
+import Footer from './components/Footer.vue'
 export default {
     name: 'App',
-
     components: {
         Header,
-        Add,
         List,
+        Footer,
     },
 
     data() {
         return {
-            comments: [
-              { id: 1, username: 'aaa', content: 'vue不错哦' },
-              { id: 2, username: 'bbb', content: '两天学会' },
-              { id: 3, username: 'ccc', content: 'webpack' },
-              ],
+            todos: [
+                { id: 1, content: '抽烟', isOver: false },
+                { id: 2, content: '喝酒', isOver: true },
+                { id: 3, content: '烫头', isOver: false },
+            ],
         }
     },
 
-    methods: {
-      // 添加的方法
-      addComment(contend){
-        this.comments.push(contend)
-      },
-      // 删除的方法
-      deleteComment(index){
-        this.comments.splice(index,1)
-      }
+    mounted() {},
 
+    methods: {
+        // 添加信息
+        addTodo(todo){
+          this.todos.push(todo)
+        },
+        // 修改isOver
+        updateTodo(index) {
+            this.todos[index].isOver = !this.todos[index].isOver
+        },
+        // 删除逻辑
+        deleteTodo(index){
+          this.todos.splice(index,1)
+        },
+
+        updateAll(val){
+          this.todos.forEach(item => item.isOver = val)
+        },
+
+        deleteAll(){
+          this.todos = this.todos.filter(item => item.isOver === false)
+        }
     },
 }
 </script>
 
 <style scoped>
+/*app*/
+.todo-container {
+    width: 600px;
+    margin: 0 auto;
+}
+.todo-container .todo-wrap {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
 </style>
