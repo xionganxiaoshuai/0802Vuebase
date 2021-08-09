@@ -15,6 +15,9 @@ import App from './App.vue';
 
 // 2.不带解析器版本写法
 new Vue({
+  beforeCreate () {
+    Vue.prototype.$bus = this
+  },
   el: '#root',
   render: (h) => h(App)
 })
