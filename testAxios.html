@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+  <script type= "text/javascript">
+    //  函数是函数，函数也是对象
+    // axios本质是一个函数，我们也可以说是一个对象
+    // 所有axios有两种用法：函数用法和对象用法
+
+    // axios的参数：3种参数，分别为  params   query  data请求体参数
+
+
+    // query参数：
+    // 接口1: https://api.github.com/search/repositories?q=v&sort=stars
+    // q = v & sort=stars 被称为查询参数，其实就是query参数
+    // query有两种写法：
+    // 1.直接写在url后面 ？https://api.github.com/search/repositories?q=v&sort=stars
+    // 2.使用配置项 params去配置，是一个对象
+
+
+    // params参数：
+    // params参数只有一种写法，就是在路径当中去写，params参数是属于路径的一部分
+    // http://localhost/users/8?name=zhaoliying$age=33
+    // ?name = zhaoliying$age = 33 这是query参数
+    // 8 是一个参数，是params参数  是真正的params参数
+    // axios当中params参数只能写在路径当中，配置项里根本没有params配置项
+
+
+
+    // data参数：  叫请求体参数
+    // 请求体参数，是向后台提交数据使用的，post put请求当中使用
+    // data参数 配置项data当中去配置，data必须是一个对象
+
+
+
+    // 获取github比较好的仓库
+    // q代表的是仓库名称关键字
+    // star代表的仓库星星数
+    axios({
+      // url:'https://api.github.com/search/repositories?q=v&sort=stars',
+      url:'https://api.github.com/search/repositories',
+      method:'get',
+      params:{
+        q:'v', //这也是query参数，并不是params参数
+        sort:'stars'
+      }
+    }).then(response => {
+      console.log(response.data);
+    }).catch(error => {
+      console.log(error.message);
+    })
+  
+  </script>
+</body>
+</html>
