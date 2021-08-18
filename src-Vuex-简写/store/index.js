@@ -14,6 +14,7 @@ const mutations = {
   }
 }
 const actions = {
+  // context本质就是我们的Store对象，它是对store对象做了一个封装，比store对象东西多，store对象当中有的东西，context当中都有
   increment(context){
     context.commit('INCREMENT')
   },
